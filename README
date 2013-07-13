@@ -1,3 +1,5 @@
 Gerrit API Scala DSL
 
 A scala DSL  for Gerrit REST Api
+
+ Gerrit changes query status isOpen get should
