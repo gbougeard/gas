@@ -72,9 +72,9 @@ object AST {
     val value = v
   }
 
-  case class Limit(v: String) extends Term {
+  case class Limit(v: Int) extends Term {
     val name = "limit"
-    val value = v
+    val value = v.toString
   }
 
 }
