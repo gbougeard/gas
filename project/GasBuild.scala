@@ -17,7 +17,7 @@ object GasBuild extends Build {
       libraryDependencies ++= Seq(
         "play-json-zipper"  %% "play-json-zipper"  % "0.1-SNAPSHOT"             ,
         "play"        %% "play-json" % "2.2-SNAPSHOT",
-        "org.specs2"  %% "specs2" % "1.13" % "test",
+        "org.specs2"  %% "specs2" % "2.1" % "test",
         "junit"        % "junit" % "4.8" % "test"
       )
     )
