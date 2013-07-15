@@ -25,6 +25,7 @@ class ChangeDslSpec extends Specification with ParserMatchers {
       val expectedResult = """q=status:open"""
 
       val parse = new lexical.Scanner(str)
+
       changeQuery(parse) match {
         case Success(r, _) => r.toString mustEqual expectedResult
         case x => failure(x.toString)

@@ -9,7 +9,7 @@ package org.gbougeard.dsl
  */
 
 import scala.util.parsing.combinator.syntactical._
-import org.gbougeard.api.AST._
+import ChangeAST._
 
 object ChangeDsl extends StandardTokenParsers {
   lexical.reserved +=("query", "status", "is", "age", "branch", "project", "owner", "get", "and", "or", "not", "-", "limit", "open", "closed", "merged")

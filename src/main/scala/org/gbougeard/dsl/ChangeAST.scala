@@ -1,4 +1,4 @@
-package org.gbougeard.api
+package org.gbougeard.dsl
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,7 +7,7 @@ package org.gbougeard.api
  * Time: 16:40
  * To change this template use File | Settings | File Templates.
  */
-object AST {
+object ChangeAST {
 
   case class ChangeQuery(queries: Queries, labels: Option[Labels]) {
     override def toString: String = {
