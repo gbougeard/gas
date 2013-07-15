@@ -17,6 +17,7 @@ class ChangeDslSpec extends Specification with ParserMatchers {
   import ChangeDsl._
 
   "The ChangeDsl" should {
+
     "parse a simple Query" in {
       val str = """
                    ( query status open ) get
@@ -24,8 +25,11 @@ class ChangeDslSpec extends Specification with ParserMatchers {
       val expectedResult = """q=status:open"""
 
       val parse = new lexical.Scanner(str)
-
-      changeQuery must succeedOn(parse).withResult(expectedResult)
+      changeQuery(parse) match {
+        case Success(r, _) => r.toString mustEqual expectedResult
+        case x => failure(x.toString)
+      }
+      //      changeQuery must succeedOn(parse).withResult(expectedResult)
 
     }
 
@@ -38,7 +42,11 @@ class ChangeDslSpec extends Specification with ParserMatchers {
 
       val parse = new lexical.Scanner(str)
 
-      changeQuery must succeedOn(parse).withResult(expectedResult)
+      changeQuery(parse) match {
+        case Success(r, _) => r.toString mustEqual expectedResult
+        case x => failure(x.toString)
+      }
+      //      changeQuery must succeedOn(parse).withResult(expectedResult)
     }
 
 
