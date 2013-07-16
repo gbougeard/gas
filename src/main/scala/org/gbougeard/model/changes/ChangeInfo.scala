@@ -4,6 +4,7 @@ import org.joda.time.DateTime
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import org.gbougeard.model.accounts.AccountInfo
+import spray.json.DefaultJsonProtocol
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,18 +21,19 @@ case class ChangeInfo(kind: String,
                       change_id: String,
                       subject: String,
                       status: String,
-                      created: DateTime,
-                      updated: DateTime,
+                      created: String,
+                      updated: String,
                       mergeable: Option[Boolean],
-                      _sortkey: String,
-                      _number: String,
+//                      _sortkey: String,
+//                      _number: String,
                       owner: AccountInfo,
                       labels: Option[Map[String, LabelInfo]],
-                      permitted_labels: Option[Map[String, String]],
+//                      permitted_labels: Option[Map[String, String]],
                       removable_reviewers: Option[List[AccountInfo]],
-                      current_revision: Option[String],
-                      revisions: Option[Map[String, RevisionInfo]],
-                      _more_changes: Option[Boolean])
+                      current_revision: Option[String]
+//                      revisions: Option[Map[String, RevisionInfo]],
+//                      _more_changes: Option[Boolean]
+                       )
 
 object ChangeInfo {
 
@@ -54,4 +56,13 @@ object ChangeInfo {
   //    (__ \ "mergeable").read[Boolean] and
   //    (__ \ "owner").read[AccountInfo]
   //  )(Change)
+}
+
+import spray.json._
+object MyJsonProtocol extends DefaultJsonProtocol {
+  implicit val accountInfoFormat = jsonFormat2(AccountInfo.apply)
+  implicit val approvalInfoFormat = jsonFormat1(ApprovalInfo.apply)
+  implicit val labelInfoFormat = jsonFormat8(LabelInfo.apply)
+  implicit val changeInfoFormat = jsonFormat15(ChangeInfo.apply)
+  //  implicit val orderConfirmationFormat = jsonFormat1(OrderConfirmation)
 }

@@ -10,12 +10,14 @@ package org.gbougeard.dsl
 object ChangeAST {
 
   case class ChangeQuery(queries: Queries, labels: Option[Labels]) {
+    val path = "/changes/?"
+
     override def toString: String = {
       val label = labels match {
         case Some(l) => "&" + l.toString
         case None => ""
       }
-      queries + label
+      path + queries + label
     }
   }
 
