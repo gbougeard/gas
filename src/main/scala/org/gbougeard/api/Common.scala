@@ -55,7 +55,9 @@ object Common {
 //            log.info(s"${msg.indexOf(PREFIX) + PREFIX.length}")
             val json = msg.substring(msg.indexOf(PREFIX) + PREFIX.length)
             log.info(s"json ${json.substring(0, 50)}")
-            val changeInfo :ChangeInfo = Json.parse(json).as[ChangeInfo]
+
+          // TODO : if there are more than one query, the result is a List[List[ChangeInfo]]
+            val changeInfo = Json.parse(json).as[List[ChangeInfo]]
             log.info("changeInfo {}", changeInfo)
         }
 

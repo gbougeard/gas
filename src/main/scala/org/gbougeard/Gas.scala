@@ -10,8 +10,7 @@ object Gas extends App {
   println("Hello, gas")
 
   val str = """
-               (query status open and branch "master" limit 5 ,
-               query status closed limit 5 ) get ("LABELS","ALL_FILES")
+               (query status open and branch "master" limit 5 ) get ("LABELS","ALL_FILES")
             """"
 
   import ChangeDsl._
