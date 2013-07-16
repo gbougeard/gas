@@ -22,7 +22,7 @@ class ChangeDslSpec extends Specification with ParserMatchers {
       val str = """
                    ( query status open ) get
                 """
-      val expectedResult = """q=status:open"""
+      val expectedResult = """/changes/?q=status:open"""
 
       val parse = new lexical.Scanner(str)
 
@@ -39,7 +39,7 @@ class ChangeDslSpec extends Specification with ParserMatchers {
                    ( query status open and branch "myBranch" ,
                      query status closed limit 5) get("LABELS","ALL_FILES")
                 """
-      val expectedResult = """q=status:open+branch:myBranch&q=status:closed+limit:5&o=LABELS&o=ALL_FILES"""
+      val expectedResult = """/changes/?q=status:open+branch:myBranch&q=status:closed+limit:5&o=LABELS&o=ALL_FILES"""
 
       val parse = new lexical.Scanner(str)
 
